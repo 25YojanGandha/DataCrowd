@@ -1,25 +1,25 @@
-import React from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
-// import JSONPretty from 'react-json-pretty';
+import React, { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { GlobalData } from '../App';
 
 const Profile = () => {
-  const { user, isAuthenticated } = useAuth0();
+    const { user, isAuthenticated } = useAuth0();
+    let gData = useContext(GlobalData);
 
-  return (
-    isAuthenticated && ( 
-     <div>
-        <img src={user.picture} alt={user.name} />
-        {/*<h2>{user.name}</h2>
-        <p>{user.email}</p>
-        <JSONPretty data={user} /> */}
-        {JSON.stringify(user, null, 2)}
+    // useEffect(()=>{
+    //     gData.setUserInfo(user);
+    // },[])
 
-        {console.log(user)}
-
-        {/* <dynamicjdkcnkdhcio></> */}
-      </div>
+    return (
+        isAuthenticated?(
+            <div>
+                {/* {gData.setUserInfo(user)} */}
+                <img src={user.picture} alt={user.name} />
+                {JSON.stringify(user, null, 2)}
+            </div>
+        ):<></>
     )
-  )
 }
 
 export default Profile;
