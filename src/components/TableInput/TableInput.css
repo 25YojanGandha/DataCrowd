@@ -1,0 +1,107 @@
+.tableInput_body {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.397);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tableInput_sectionContainer {
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+  border-radius: 1rem;
+  height: 80%;
+  width: 55%;
+  background-color: whitesmoke;
+  overflow: hidden;
+}
+
+.tableInput_innerPart {
+  height: calc(100% - 3.5rem);
+  width: 100%;
+  border: 2px solid #D5DBE5;
+}
+.tableInput_saveCancelBox {
+  height: 3.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.3rem;
+  padding-right: 1.5rem;
+  gap: 1rem;
+}
+.btnRedColor {
+  background-color: #d93025;
+}
+
+.tableInput_r_c_inputBox{
+ height: 4rem;
+ width: 100%;
+  border-bottom: 2px solid #D5DBE5;
+  padding-left: 1rem;
+  gap: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.tableInput_rowColumData{
+ height: calc(100% - 4rem);
+ width: 100%;
+ /* border: 2px  solid red; */
+ overflow:auto;
+}
+.tableInputContainer{
+ height: 2.5rem;
+  font-family: 'Signika Negative', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+    color: #262727;
+}
+.tableInputContainer>input{
+ height: 2rem;
+ border: none;
+ outline: none;
+ font-family: 'Signika Negative', sans-serif;
+ font-size: 1.1rem;
+ border-radius: 0.3rem;
+ padding-left: 0.5rem;
+ box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+
+.columnInputData{
+ height: 10rem;
+ width: 100%;
+ /* border: 2px solid red; */
+ padding: 1rem;
+}
+
+.columnInnerdata{
+ height: 3rem;
+ width: 100%;
+ /* border: 2px solid red; */
+margin-top: 0.5rem;
+ display: flex;
+ gap: 2rem;
+ /* justify-content: center; */
+ align-items: center;
+}
+.tableInputSelectBox select{
+ height:1.85rem;
+  font-family: 'Signika Negative', sans-serif;
+ font-size: 1rem;
+ border: none;
+ box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+ border-radius: 0.3rem;
+ color: #343535;
+}
+.inputMainContainerLabel{
+   font-family: 'Signika Negative', sans-serif;
+ font-size: 2rem;
+ font-weight: 500;
+ color: #2c2d2d;
+ border-bottom: 2px solid #d5dbe5;
+}
