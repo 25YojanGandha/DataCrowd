@@ -19,7 +19,6 @@ function Table() {
 
  let f = async () => {
   await firebase.firestore().collection("users").add({ a: 'ss' });
-  // console.log(docRef);
  };
  f();
 
