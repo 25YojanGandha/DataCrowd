@@ -50,9 +50,22 @@
 .tableInput_rowColumData{
  height: calc(100% - 4rem);
  width: 100%;
- /* border: 2px  solid red; */
  overflow:auto;
+
 }
+
+.tableInput_rowColumData_innertext{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ font-family: 'Signika Negative', sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: #bebebe;
+}
+
 .tableInputContainer{
  height: 2.5rem;
   font-family: 'Signika Negative', sans-serif;
@@ -73,7 +86,6 @@
 }
 
 .columnInputData{
- height: 10rem;
  width: 100%;
  /* border: 2px solid red; */
  padding: 1rem;
