@@ -1,21 +1,25 @@
-import React, { createRef, useContext } from 'react';
+import React, { createRef, useContext, useState } from 'react';
 import { GlobalData } from '../../App';
-import './TableInput.css'
+import './TableInput.css';
+import { useAuth0 } from '@auth0/auth0-react';
+
+import { realTimeDataBase } from "../../firebase-config";
+
 function TableInput() {
+ const { user } = useAuth0();
  let gData = useContext(GlobalData)
  let inputRowElement = createRef()
  let inputColumnElement = createRef()
  let inputDataColumnContainerElement = createRef()
- 
  let columDataArr = new Array(Number(gData.column))
  let rowDataArr = new Array(Number(gData.row))
+ let [tableName,setTableName] = useState('')
 
  for (let i = 0; i < rowDataArr.length; i++) {
   rowDataArr[i] = new Array(Number(gData.column));
-  for (let j = 0; j <rowDataArr[i].length; j++) {
+  for (let j = 0; j < rowDataArr[i].length; j++) {
    rowDataArr[i][j] = ''
   }
-
  }
 
  let createTableRowdata = () => {
@@ -46,9 +50,17 @@ function TableInput() {
    }
   }
 
+  //   console.log(columDataArr);
+  //   console.log(rowDataArr);
 
-  console.log(columDataArr);
-  console.log(rowDataArr);
+  let userGmail = user.email.split('.')[0]
+  realTimeDataBase.ref(userGmail).child('tableData/' + tableName).get().then((snapshot) => {
+   if (snapshot.exists()) {
+    console.log(snapshot.val());
+   } else {
+    realTimeDataBase.ref(userGmail).child('tableData/' + tableName).set({ column: columDataArr, row: rowDataArr });
+   }
+  })
 
   gData.setIsTableComponent(false)
   gData.setRow(0)
@@ -86,7 +98,6 @@ function TableInput() {
          <option value="Datatime">Datatime</option>
         </select>
        </div>
-
       </div>
      )
     })}
@@ -99,7 +110,12 @@ function TableInput() {
     <div className='tableInput_innerPart'>
      <div className='tableInput_r_c_inputBox'>
       <div className='tableInputContainer'>
-       Number of Rows <input placeholder='Enter Number' ref={inputRowElement} type="text" onKeyUp={(e) => {
+       Table Name <input placeholder='Enter Table Name' ref={inputColumnElement} onKeyUp={(e) => {
+        setTableName(e.currentTarget.value)
+       }} type="text"/>
+      </div>
+      <div className='tableInputContainer'>
+       Number of Rows <input placeholder='Enter Rows No' ref={inputRowElement} type="text" onKeyUp={(e) => {
         if (e.target.value !== '') {
          gData.setRow(e.target.value)
         } else {
@@ -110,7 +126,7 @@ function TableInput() {
        }} />
       </div>
       <div className='tableInputContainer'>
-       Number of column <input placeholder='Enter Number' ref={inputColumnElement} type="text" onKeyUp={(e) => {
+       Number of column <input placeholder='Enter Column No' ref={inputColumnElement} type="text" onKeyUp={(e) => {
         if (e.target.value !== '') {
          gData.setColumn(e.target.value)
         } else {
@@ -120,6 +136,7 @@ function TableInput() {
         e.target.value = e.target.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');
        }} />
       </div>
+
      </div>
      <div className='tableInput_rowColumData'>
       {gData.row !== 0 || gData.column !== 0 ? <>
@@ -136,7 +153,6 @@ function TableInput() {
      }}>Cancel</div>
      <div className='tableBtn ' onClick={() => {
       createTableRowdata();
-
      }}>Done</div>
     </div>
    </div>
