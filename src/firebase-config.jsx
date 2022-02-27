@@ -1,15 +1,15 @@
 import  firebase  from "firebase/compat/app";
-import firestore from "firebase/compat/firestore";
+import database from 'firebase/compat/database'
 
 const firebaseConfig = {
- apiKey: "AIzaSyBoUFbaPflWkJYRAvTr6sclLtV3rZIo67A",
- authDomain: "table-afb57.firebaseapp.com",
- databaseURL: "https://table-afb57-default-rtdb.firebaseio.com",
- projectId: "table-afb57",
- storageBucket: "table-afb57.appspot.com",
- messagingSenderId: "1004079237364",
- appId: "1:1004079237364:web:061b105f5bba9679a536a1"
-};
+    apiKey: "AIzaSyCsIf1vn-3qHQQlFBlGAZOvITI9AnFPVd4",
+    authDomain: "datacrowd-15dbf.firebaseapp.com",
+    databaseURL: "https://datacrowd-15dbf-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "datacrowd-15dbf",
+    storageBucket: "datacrowd-15dbf.appspot.com",
+    messagingSenderId: "607668547224",
+    appId: "1:607668547224:web:2ebb4d213b8f561d976aed"
+  };
 
-firebase.initializeApp(firebaseConfig)
-export const db = firebase.firestore()
+firebase.initializeApp(firebaseConfig);
+export const realTimeDataBase = firebase.database();
