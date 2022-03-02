@@ -71,3 +71,12 @@
 .createTableBtn:hover{
   background-color: #6d5bd0;
 }
+.tableMainContainerGrid{
+  height: calc(100% - 6rem);
+  width: 100%;
+  /* border: 2px solid red; */
+  padding:2rem;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
